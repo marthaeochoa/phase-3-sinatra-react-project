@@ -14,7 +14,15 @@ puts "🌱 Seeding spices..."
         description: Faker::Lorem.paragraph(sentence_count: 4, supplemental: true),
         blog_id: blog.id
         )
-      end
+
+
+        rand(0..4).times do
+            comment = Comment.create(
+                comment: Faker::Lorem.sentence,
+                post_id: post.id
+            )
+        end
+    end
 end
 
 
