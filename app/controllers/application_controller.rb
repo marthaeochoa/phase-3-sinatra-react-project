@@ -40,4 +40,39 @@ class ApplicationController < Sinatra::Base
     posts.to_json
   end
 
+  get '/posts/:id' do 
+    post = Post.find(params[:id])
+    post.to_json
+  end
+
+  patch '/posts/:id' do
+    post = Post.find(params[:id])
+    post.update(
+      name: params[:name], 
+      description: params[:description]
+      )
+    post.to_json
+  end
+
+  delete '/posts/:id' do
+    post = Post.find(params[:id])
+    post.destroy
+    post.to_json
+  end
+  
+  get '/comments' do
+    comments = Comment.all
+    comments.to_json
+  end
+
+  get '/comments/:id' do
+    comment = Comment.find(params[:id])
+    comment.to_json
+  end
+
+  delete '/comments/:id' do 
+    comment = Comment.find(params[:id])
+    comment.destroy
+    comment.to_json
+  end 
 end
